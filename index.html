@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="ru"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="apple-mobile-web-app-title" content="VAIO"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="apple-touch-icon" href="icon.png"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;CALV2 Tool&lt;/title&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 1. РЕГИСТРИРУЕМ ШРИФТ */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@font-face {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'SonyCustom';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>src: url('Sony.ttf') format('truetype');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: normal;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-style: normal;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 2. ПРИМЕНЯЕМ КО ВСЕМУ (Жестко через !) */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>* {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'SonyCustom', sans-serif !important;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>-webkit-font-smoothing: antialiased;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>:root {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--ps-glow: #00e1ff;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--glass-aqua: rgba(135, 206, 250, 0.25);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--aqua-gradient: linear-gradient(to bottom, #7db9e8 0%, #207cca 40%, #003791 50%, #1e5799 100%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0; padding: 0; height: 100dvh; width: 100vw;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex; justify-content: center; align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: radial-gradient(circle at 50% 50%, #0058e6 0%, #001e4d 100%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white; overflow: hidden; perspective: 1200px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>-webkit-tap-highlight-color: transparent;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Плашка загрузки */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#loading-toast {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: fixed; top: 30px; left: 50%; transform: translateX(-50%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 10px 20px; border-radius: 20px; border: 1px solid var(--ps-glow);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 9999; display: flex; align-items: center; gap: 10px; font-size: 13px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.spinner {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-top-color: var(--ps-glow); border-radius: 50%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>animation: spin 1s linear infinite;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@keyframes spin { to { transform: rotate(360deg); } }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Контейнеры и модалки */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.modal-overlay {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: fixed; inset: 0; display: flex; justify-content: center; align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 2000; visibility: hidden; opacity: 0; transition: 0.4s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: rgba(0,0,0,0.4);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.modal-overlay.active { visibility: visible; opacity: 1; }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.modal {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 85%; max-width: 310px; background: var(--glass-aqua); backdrop-filter: blur(25px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 1.5px solid rgba(255, 255, 255, 0.4); border-radius: 25px; padding: 25px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center; transform: rotateY(180deg) scale(0.8);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.modal-overlay.active .modal { transform: rotateY(0deg) scale(1); }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#app {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: none; width: 92%; max-width: 380px;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(30px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Поля ввода и текст */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>textarea {<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%; height: 90px; background: rgba(0,0,0,0.4);<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 1px solid rgba(255,255,255,0.1); border-radius: 15px;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white; padding: 12px; margin-bottom: 12px;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>outline: none; font-size: 16px; resize: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>input {<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%; padding: 12px; margin: 15px 0; border-radius: 12px;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3);<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white; text-align: center; font-size: 22px; outline: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* Кнопки в стиле Sony */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>button {<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 50px; border-radius: 25px; border: none;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--aqua-gradient); color: white; font-weight: bold;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.4);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative; overflow: hidden; font-size: 15px; letter-spacing: 1px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>button:active { transform: scale(0.96); }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.full-btn { grid-column: span 2; background: rgba(255,255,255,0.15); margin-top: 5px; border: 1px solid rgba(255,255,255,0.2); }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.ru-hint { font-size: 14px; color: rgba(200,200,200,0.8); text-align: center; margin-top: 10px; min-height: 18px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;div id="loading-toast"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="spinner"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;span&gt;Loading SFX&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;div id="password-screen" class="modal-overlay active"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="modal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2 style="font-weight:100; letter-spacing:4px; margin-top:0;"&gt;Input Password&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;input type="password" id="pass-input" placeholder="CODE" inputmode="numeric"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="checkPass()"&gt;Access&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;div id="alert-screen" class="modal-overlay"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="modal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p id="alert-msg" style="margin-bottom:20px;"&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="closeAlert()"&gt;OK&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;div id="app"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1 style="text-align:center; font-weight:100; letter-spacing:8px; margin: 10px 0 20px 0;"&gt;CALV2&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;textarea id="input" placeholder="Введите текст..."&gt;&lt;/textarea&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="btn-grid"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="process(true)"&gt;Encrypt&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onclick="process(false)"&gt;Decrypt&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button class="full-btn" onclick="copyText()"&gt;Copy Result&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;textarea id="output" readonly style="margin-top:15px; height:70px;" placeholder="Результат..."&gt;&lt;/textarea&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="ru-hint-box" class="ru-hint"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const SOUND_SOURCES = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>click: 'https://files.catbox.moe/998q29.mp3',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>success: 'https://files.catbox.moe/88bvhi.mp3',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>error: 'https://files.catbox.moe/ykhsek.mp3',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>intro: 'https://files.catbox.moe/wbi00o.mp3'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const SOUNDS = {};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>let loadedCount = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const total = Object.keys(SOUND_SOURCES).length;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>Object.entries(SOUND_SOURCES).forEach(([key, src]) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const audio = new Audio(src);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>audio.addEventListener('canplaythrough', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!SOUNDS[key]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>SOUNDS[key] = audio;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>loadedCount++;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (loadedCount === total) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>document.getElementById('loading-toast').style.display = 'none';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}, { once: true });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>audio.load();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function playSnd(name) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (SOUNDS[name]) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>SOUNDS[name].currentTime = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>SOUNDS[name].play().catch(() =&gt; {});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function checkPass() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (document.getElementById('pass-input').value === "2388") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>playSnd('intro');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('password-screen').classList.remove('active');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('password-screen').style.display = 'none';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.getElementById('app').style.display = 'block';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, 500);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>playSnd('error');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const m = document.querySelector('#password-screen .modal');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>m.style.borderColor = "#ff4444";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; m.style.borderColor = "rgba(255,255,255,0.4)", 500);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const VOWELS_MAP = { 'a': '1', 'e': '2', 'o': '3', 'i': '4', 'y': '5', 'u': '5' };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const REV_VOWELS = { '1': 'a', '2': 'e', '3': 'o', '4': 'i', '5': 'u' };</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const TRANSLIT = {'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'i','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'ts','ч':'ch','ш':'sh','щ':'sch','ы':'i','э':'e','ю':'yu','я':'ya'};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const REV_TRANSLIT = {'a':'а','b':'б','v':'в','g':'г','д':'д','e':'е','zh':'ж','z':'з','i':'и','k':'к','l':'л','m':'м','n':'н','o':'о','p':'п','r':'р','с':'с','т':'т','u':'у','f':'ф','h':'х','ts':'ц','ch':'ч','sh':'ш','sch':'щ','yu':'ю','ya':'я'};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function process(isEnc) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>playSnd('click');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const text = document.getElementById('input').value.toLowerCase();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if(!text) return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let words = text.split(/\s+/), res = [], ru = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>words.forEach(word =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (word.length &lt; 2) { res.push(word); ru.push(word); return; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (isEnc) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>let t = word.split('').map(c =&gt; TRANSLIT[c] || c).join('');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>let a = t.split('');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>[a[0], a[a.length-1]] = [a[a.length-1], a[0]];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>res.push(a.map(c =&gt; VOWELS_MAP[c] || c).join(''));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>let a = word.split('').map(c =&gt; REV_VOWELS[c] || c);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>[a[0], a[a.length-1]] = [a[a.length-1], a[0]];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>let lat = a.join('');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>res.push(lat);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>let rW = "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>for(let i=0; i&lt;lat.length; i++) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>let d = lat[i]+lat[i+1];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if(REV_TRANSLIT[d]){ rW+=REV_TRANSLIT[d]; i++; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>else { rW+=REV_TRANSLIT[lat[i]]||lat[i]; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>ru.push(rW);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('output').value = res.join(' ');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('ru-hint-box').innerText = isEnc ? "" : "RU: " + ru.join(' ');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function copyText() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>playSnd('success');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>navigator.clipboard.writeText(document.getElementById('output').value);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('alert-msg').innerText = «Copied To Clipboard;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('alert-screen').classList.add('active');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function closeAlert() {<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>playSnd('click');<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('alert-screen').classList.remove('active');<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
