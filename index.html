@@ -15,7 +15,7 @@
         /* 1. РЕГИСТРИРУЕМ ШРИФТ */
         @font-face {
             font-family: 'SonyCustom';
-            src: url('Sony.ttf') format('truetype');
+            src: url('Sony.TTF') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -39,7 +39,7 @@
             color: white; overflow: hidden; perspective: 1200px;
             -webkit-tap-highlight-color: transparent;
             /* ПРИМЕНЯЕМ ШРИФТ ТУТ */
-            font-family: 'SonyCustom', serif;
+            font-family: 'SonyCustom', sans-serif;
         }
 
         /* 3. КНОПКИ И ПОЛЯ (Заставляем их брать шрифт Sony) */
@@ -249,7 +249,7 @@
     function copyText() {
         playSnd('success');
         navigator.clipboard.writeText(document.getElementById('output').value);
-        document.getElementById('alert-msg').innerText = "SYSTEM: COPIED";
+        document.getElementById('alert-msg').innerText = "Copied To Clipboard";
         document.getElementById('alert-screen').classList.add('active');
     }
 
