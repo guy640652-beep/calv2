@@ -6,26 +6,45 @@
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="VAIO">
+    <meta name="apple-mobile-web-app-title" content="CALV2">
     <link rel="apple-touch-icon" href="icon.png">
     
     <title>CALV2 Tool</title>
 
     <style>
         /* 1. РЕГИСТРИРУЕМ ШРИФТ */
-        @font-face {
-            font-family: 'SonyCustom';
-            src: url('Sony.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
+        /* 1. РЕГИСТРИРУЕМ ШРИФТ */
+@font-face {
+    font-family: 'SonyCustom';
+    src: url('Sony.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
-        /* 2. ПРИМЕНЯЕМ КО ВСЕМУ (Жестко через !) */
-        * {
-            font-family: 'SonyCustom', sans-serif !important;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
+/* 2. ЖЕСТКОЕ ПРИМЕНЕНИЕ КО ВСЕМ ТИПАМ ЭЛЕМЕНТОВ */
+* {
+    font-family: 'SonyCustom', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 3. ОТДЕЛЬНО ДЛЯ ТЕХ, КТО ОБЫЧНО "СОПРОТИВЛЯЕТСЯ" */
+input, 
+textarea, 
+button, 
+select, 
+a, 
+span, 
+div, 
+p {
+    font-family: 'SonyCustom', sans-serif !important;
+}
+
+/* Фикс для iOS, чтобы кнопки не меняли шрифт при нажатии */
+input::placeholder, 
+textarea::placeholder {
+    font-family: 'SonyCustom', sans-serif !important;
+    opacity: 0.5;
+}
 
         :root {
             --ps-glow: #00e1ff;
