@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="VAIO">
+    <link rel="apple-touch-icon" href="icon.png">
+    
+    <title>CALV2 Tool</title>
+
+    <style>
+        /* 1. РЕГИСТРИРУЕМ ШРИФТ */
+        @font-face {
+            font-family: 'SonyCustom';
+            src: url('Sony.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* 2. ПРИМЕНЯЕМ КО ВСЕМУ (Жестко через !) */
+        * {
+            font-family: 'SonyCustom', sans-serif !important;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        :root {
+            --ps-glow: #00e1ff;
+            --glass-aqua: rgba(135, 206, 250, 0.25);
+            --aqua-gradient: linear-gradient(to bottom, #7db9e8 0%, #207cca 40%, #003791 50%, #1e5799 100%);
+        }
+
+        body {
+            margin: 0; padding: 0; height: 100dvh; width: 100vw;
+            display: flex; justify-content: center; align-items: center;
+            background: radial-gradient(circle at 50% 50%, #0058e6 0%, #001e4d 100%);
+            color: white; overflow: hidden; perspective: 1200px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Плашка загрузки */
+        #loading-toast {
+            position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px);
+            padding: 10px 20px; border-radius: 20px; border: 1px solid var(--ps-glow);
+            z-index: 9999; display: flex; align-items: center; gap: 10px; font-size: 13px;
+        }
+
+        .spinner {
+            width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.2);
+            border-top-color: var(--ps-glow); border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Контейнеры и модалки */
+        .modal-overlay {
+            position: fixed; inset: 0; display: flex; justify-content: center; align-items: center;
+            z-index: 2000; visibility: hidden; opacity: 0; transition: 0.4s;
+            background: rgba(0,0,0,0.4);
+        }
+        .modal-overlay.active { visibility: visible; opacity: 1; }
+
+        .modal {
+            width: 85%; max-width: 310px; background: var(--glass-aqua); backdrop-filter: blur(25px);
+            border: 1.5px solid rgba(255, 255, 255, 0.4); border-radius: 25px; padding: 25px;
+            text-align: center; transform: rotateY(180deg) scale(0.8);
+            transition: 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .modal-overlay.active .modal { transform: rotateY(0deg) scale(1); }
+
+        #app {
+            display: none; width: 92%; max-width: 380px; 
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 30px;
+            padding: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Поля ввода и текст */
+        textarea { 
+            width: 100%; height: 90px; background: rgba(0,0,0,0.4); 
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; 
+            color: white; padding: 12px; margin-bottom: 12px; 
+            outline: none; font-size: 16px; resize: none;
+        }
+
+        input { 
+            width: 100%; padding: 12px; margin: 15px 0; border-radius: 12px; 
+            border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); 
+            color: white; text-align: center; font-size: 22px; outline: none;
+        }
+
+        /* Кнопки в стиле Sony */
+        button { 
+            height: 50px; border-radius: 25px; border: none; 
+            background: var(--aqua-gradient); color: white; font-weight: bold; 
+            cursor: pointer; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            position: relative; overflow: hidden; font-size: 15px; letter-spacing: 1px;
+        }
+        button:active { transform: scale(0.96); }
+        
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .full-btn { grid-column: span 2; background: rgba(255,255,255,0.15); margin-top: 5px; border: 1px solid rgba(255,255,255,0.2); }
+
+        .ru-hint { font-size: 14px; color: rgba(200,200,200,0.8); text-align: center; margin-top: 10px; min-height: 18px; }
+    </style>
+</head>
+<body>
+
+<div id="loading-toast">
+    <div class="spinner"></div>
+    <span>Loading SFX</span>
+</div>
+
+<div id="password-screen" class="modal-overlay active">
+    <div class="modal">
+        <h2 style="font-weight:100; letter-spacing:4px; margin-top:0;">Input Password</h2>
+        <input type="password" id="pass-input" placeholder="CODE" inputmode="numeric">
+        <button onclick="checkPass()">Access</button>
+    </div>
+</div>
+
+<div id="alert-screen" class="modal-overlay">
+    <div class="modal">
+        <p id="alert-msg" style="margin-bottom:20px;"></p>
+        <button onclick="closeAlert()">OK</button>
+    </div>
+</div>
+
+<div id="app">
+    <h1 style="text-align:center; font-weight:100; letter-spacing:8px; margin: 10px 0 20px 0;">CALV2</h1>
+    <textarea id="input" placeholder="Введите текст..."></textarea>
+    <div class="btn-grid">
+        <button onclick="process(true)">Encrypt</button>
+        <button onclick="process(false)">Decrypt</button>
+        <button class="full-btn" onclick="copyText()">Copy Result</button>
+    </div>
+    <textarea id="output" readonly style="margin-top:15px; height:70px;" placeholder="Результат..."></textarea>
+    <div id="ru-hint-box" class="ru-hint"></div>
+</div>
+
+<script>
+    const SOUND_SOURCES = {
+        click: 'https://files.catbox.moe/998q29.mp3',
+        success: 'https://files.catbox.moe/88bvhi.mp3',
+        error: 'https://files.catbox.moe/ykhsek.mp3',
+        intro: 'https://files.catbox.moe/wbi00o.mp3'
+    };
+
+    const SOUNDS = {};
+    let loadedCount = 0;
+    const total = Object.keys(SOUND_SOURCES).length;
+
+    Object.entries(SOUND_SOURCES).forEach(([key, src]) => {
+        const audio = new Audio(src);
+        audio.addEventListener('canplaythrough', () => {
+            if (!SOUNDS[key]) {
+                SOUNDS[key] = audio;
+                loadedCount++;
+                if (loadedCount === total) {
+                    document.getElementById('loading-toast').style.display = 'none';
+                }
+            }
+        }, { once: true });
+        audio.load();
+    });
+
+    function playSnd(name) {
+        if (SOUNDS[name]) {
+            SOUNDS[name].currentTime = 0;
+            SOUNDS[name].play().catch(() => {});
+        }
+    }
+
+    function checkPass() {
+        if (document.getElementById('pass-input').value === "2388") {
+            playSnd('intro');
+            document.getElementById('password-screen').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('password-screen').style.display = 'none';
+                document.getElementById('app').style.display = 'block';
+            }, 500);
+        } else {
+            playSnd('error');
+            const m = document.querySelector('#password-screen .modal');
+            m.style.borderColor = "#ff4444";
+            setTimeout(() => m.style.borderColor = "rgba(255,255,255,0.4)", 500);
+        }
+    }
+
+    const VOWELS_MAP = { 'a': '1', 'e': '2', 'o': '3', 'i': '4', 'y': '5', 'u': '5' };
+    const REV_VOWELS = { '1': 'a', '2': 'e', '3': 'o', '4': 'i', '5': 'u' };
+    const TRANSLIT = {'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'i','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'ts','ч':'ch','ш':'sh','щ':'sch','ы':'i','э':'e','ю':'yu','я':'ya'};
+    const REV_TRANSLIT = {'a':'а','b':'б','v':'в','g':'г','д':'д','e':'е','zh':'ж','z':'з','i':'и','k':'к','l':'л','m':'м','n':'н','o':'о','p':'п','r':'р','с':'с','т':'т','u':'у','f':'ф','h':'х','ts':'ц','ch':'ч','sh':'ш','sch':'щ','yu':'ю','ya':'я'};
+
+    function process(isEnc) {
+        playSnd('click');
+        const text = document.getElementById('input').value.toLowerCase();
+        if(!text) return;
+        let words = text.split(/\s+/), res = [], ru = [];
+        words.forEach(word => {
+            if (word.length < 2) { res.push(word); ru.push(word); return; }
+            if (isEnc) {
+                let t = word.split('').map(c => TRANSLIT[c] || c).join('');
+                let a = t.split('');
+                [a[0], a[a.length-1]] = [a[a.length-1], a[0]];
+                res.push(a.map(c => VOWELS_MAP[c] || c).join(''));
+            } else {
+                let a = word.split('').map(c => REV_VOWELS[c] || c);
+                [a[0], a[a.length-1]] = [a[a.length-1], a[0]];
+                let lat = a.join('');
+                res.push(lat);
+                let rW = "";
+                for(let i=0; i<lat.length; i++) {
+                    let d = lat[i]+lat[i+1];
+                    if(REV_TRANSLIT[d]){ rW+=REV_TRANSLIT[d]; i++; }
+                    else { rW+=REV_TRANSLIT[lat[i]]||lat[i]; }
+                }
+                ru.push(rW);
+            }
+        });
+        document.getElementById('output').value = res.join(' ');
+        document.getElementById('ru-hint-box').innerText = isEnc ? "" : "RU: " + ru.join(' ');
+    }
+
+    function copyText() {
+        playSnd('success');
+        navigator.clipboard.writeText(document.getElementById('output').value);
+        document.getElementById('alert-msg').innerText = «Copied To Clipboard;
+        document.getElementById('alert-screen').classList.add('active');
+    }
+
+    function closeAlert() { 
+        playSnd('click'); 
+        document.getElementById('alert-screen').classList.remove('active'); 
+    }
+</script>
+</body>
+</html>
