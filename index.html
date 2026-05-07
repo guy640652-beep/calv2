@@ -222,7 +222,7 @@
         if(!text) return;
         let words = text.split(/\s+/), res = [], ru = [];
         words.forEach(word => {
-            if (word.length < 2) { res.push(word); ru.push(word); return; }
+            if (word.length === 0) { res.push(word); ru.push(word); return; }
             if (isEnc) {
                 let t = word.split('').map(c => TRANSLIT[c] || c).join('');
                 let a = t.split('');
