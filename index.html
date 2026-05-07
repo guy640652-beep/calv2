@@ -11,40 +11,20 @@
     
     <title>CALV2 Tool</title>
 
-    <style>
+       <style>
         /* 1. РЕГИСТРИРУЕМ ШРИФТ */
-        /* 1. РЕГИСТРИРУЕМ ШРИФТ */
-@font-face {
-    font-family: 'SonyCustom';
-    src: url('Sony.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+        @font-face {
+            font-family: 'SonyCustom';
+            src: url('Sony.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-/* 2. ЖЕСТКОЕ ПРИМЕНЕНИЕ КО ВСЕМ ТИПАМ ЭЛЕМЕНТОВ */
-* {
-    font-family: 'SonyCustom', -apple-system, BlinkMacSystemFont, sans-serif !important;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* 3. ОТДЕЛЬНО ДЛЯ ТЕХ, КТО ОБЫЧНО "СОПРОТИВЛЯЕТСЯ" */
-input, 
-textarea, 
-button, 
-select, 
-a, 
-span, 
-div, 
-p {
-    font-family: 'SonyCustom', sans-serif !important;
-}
-
-/* Фикс для iOS, чтобы кнопки не меняли шрифт при нажатии */
-input::placeholder, 
-textarea::placeholder {
-    font-family: 'SonyCustom', sans-serif !important;
-    opacity: 0.5;
-}
+        /* 2. ОБЩИЕ НАСТРОЙКИ (Чтобы всё было ровно) */
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
 
         :root {
             --ps-glow: #00e1ff;
@@ -58,6 +38,14 @@ textarea::placeholder {
             background: radial-gradient(circle at 50% 50%, #0058e6 0%, #001e4d 100%);
             color: white; overflow: hidden; perspective: 1200px;
             -webkit-tap-highlight-color: transparent;
+            /* ПРИМЕНЯЕМ ШРИФТ ТУТ */
+            font-family: 'SonyCustom', sans-serif;
+        }
+
+        /* 3. КНОПКИ И ПОЛЯ (Заставляем их брать шрифт Sony) */
+        input, textarea, button {
+            font-family: 'SonyCustom', sans-serif !important;
+            outline: none;
         }
 
         /* Плашка загрузки */
@@ -98,26 +86,27 @@ textarea::placeholder {
             padding: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        /* Поля ввода и текст */
+        /* Поля ввода */
         textarea { 
             width: 100%; height: 90px; background: rgba(0,0,0,0.4); 
             border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; 
             color: white; padding: 12px; margin-bottom: 12px; 
-            outline: none; font-size: 16px; resize: none;
+            font-size: 16px; resize: none;
         }
 
         input { 
             width: 100%; padding: 12px; margin: 15px 0; border-radius: 12px; 
             border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); 
-            color: white; text-align: center; font-size: 22px; outline: none;
+            color: white; text-align: center; font-size: 22px;
         }
 
-        /* Кнопки в стиле Sony */
+        /* Кнопки — теперь ровные и со шрифтом */
         button { 
             height: 50px; border-radius: 25px; border: none; 
             background: var(--aqua-gradient); color: white; font-weight: bold; 
             cursor: pointer; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.4);
             position: relative; overflow: hidden; font-size: 15px; letter-spacing: 1px;
+            display: flex; align-items: center; justify-content: center;
         }
         button:active { transform: scale(0.96); }
         
